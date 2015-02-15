@@ -1,5 +1,5 @@
 import predictionio
-
+import numpy as np
 client = predictionio.EventClient(
     access_key='7tBkEmybaJ2xnY0y3r3aiDIyMfqABbXBj03VnZenWHXQJfBwEewlhnriDbwc6Elh',
     url='http://localhost:7070',
@@ -7,14 +7,18 @@ client = predictionio.EventClient(
     qsize=500
 )
 
+data = np.genfromtxt("data/jain.txt", delimiter = "\t")
+num = data.shape[0]
 # Set the 4 properties for a user
-client.create_event(
-    event="$set",
-    entity_type="user",
-    entity_id=2,
-    properties= {
-      "attr0" : 12.1,
-      "attr1" : 2.3,
-      "plan" : int(2)
-    }
-)
+for i in range(0,num):
+	client.create_event(
+    	event="$set",
+    	entity_type="user",
+    	entity_id=i,
+    	properties= {
+      	"attr0" : data[i][0],
+      	"attr1" : data[i][1],
+      	"plan" : data[i][2]
+    	}
+	)
+	print(i)

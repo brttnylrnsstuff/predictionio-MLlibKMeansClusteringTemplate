@@ -8,6 +8,7 @@ import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd.RDD
 import org.apache.spark.mllib.linalg.Vector
+import org.apache.spark.mllib.linalg.Vectors
 import grizzled.slf4j.Logger
 
 case class AlgorithmParams(
@@ -28,12 +29,13 @@ class Algorithm(val ap: AlgorithmParams)
     val kMeansI = new KMeans()
  	kMeansI.setK(ap.numCenters)
 	kMeansI.setMaxIterations(ap.numIterations)
-    kMeansI.run(data.events)
+	kMeansI.run(data.events)
   }
 
   def predict(model: KMeansModel, query: Query): PredictedResult = {
     // Prefix the query with the model data
-    val result = model.predict(query.dataPoint)
+  
+	val result = model.predict(Vectors.dense(query.dataPoint))
     PredictedResult(label = result)
   }
 }

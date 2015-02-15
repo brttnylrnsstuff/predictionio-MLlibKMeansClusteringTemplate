@@ -12,7 +12,7 @@
       "name": "algo",
       "params": {
         "numCenters" : 2,
-		"numIterations" : 20
+		"numIterations" : 500
       }
     }
   ]

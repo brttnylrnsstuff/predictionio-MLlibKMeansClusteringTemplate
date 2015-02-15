@@ -33,7 +33,8 @@ class DataSource(val dsp: DataSourceParams)
 	  .map { case (entityId, properties) =>
         try {
           //Vector(properties.get[Double]("plan"),
-            Vectors.dense(Array(
+            
+			Vectors.dense(Array(
               properties.get[Double]("attr0"),
               properties.get[Double]("attr1")
             ))
