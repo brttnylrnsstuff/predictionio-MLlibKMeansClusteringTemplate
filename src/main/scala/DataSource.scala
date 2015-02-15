@@ -6,6 +6,7 @@ import io.prediction.controller.EmptyActualResult
 import io.prediction.controller.Params
 import io.prediction.data.storage.Event
 import io.prediction.data.storage.Storage
+import org.apache.spark.mllib.linalg.Vector
 
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
@@ -25,7 +26,7 @@ class DataSource(val dsp: DataSourceParams)
   def readTraining(sc: SparkContext): TrainingData = {
     val eventsDb = Storage.getPEvents()
     // read all events of EVENT involving ENTITY_TYPE and TARGET_ENTITY_TYPE
-    val eventsRDD: RDD[Event] = eventsDb.find(
+    val eventsRDD: RDD[Vector] = eventsDb.find(
       appId = dsp.appId,
       entityType = Some("user"),
       required = Some(List("plan","attr0","attr1")))(sc)
@@ -51,7 +52,7 @@ class DataSource(val dsp: DataSourceParams)
 }
 
 class TrainingData(
-  val events: RDD[Event]
+  val events: RDD[Vector]
 ) extends Serializable {
   override def toString = {
     s"events: [${events.count()}] (${events.take(2).toList}...)"

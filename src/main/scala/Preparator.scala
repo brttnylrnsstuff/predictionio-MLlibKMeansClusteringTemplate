@@ -2,6 +2,7 @@ package org.template.vanilla
 
 import io.prediction.controller.PPreparator
 import io.prediction.data.storage.Event
+import org.apache.spark.mllib.linalg.Vector
 
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
@@ -16,5 +17,5 @@ class Preparator
 }
 
 class PreparedData(
-  val events: RDD[Event]
+  val events: RDD[Vector]
 ) extends Serializable

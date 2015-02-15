@@ -2,9 +2,9 @@ package org.template.vanilla
 
 import io.prediction.controller.IEngineFactory
 import io.prediction.controller.Engine
-import org.apache.spark.mllib.linalg.Vectors
+import org.apache.spark.mllib.linalg.Vector
 case class Query(
-	val dataPoint: Vector[Double],
+	val dataPoint: Vector,
 	val label: Double
 ) extends Serializable
 
