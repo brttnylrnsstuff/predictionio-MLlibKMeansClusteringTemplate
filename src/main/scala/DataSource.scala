@@ -7,7 +7,7 @@ import io.prediction.controller.Params
 import io.prediction.data.storage.Event
 import io.prediction.data.storage.Storage
 import org.apache.spark.mllib.linalg.Vector
-
+import org.apache.spark.mllib.linalg.Vectors
 import org.apache.spark.SparkContext
 import org.apache.spark.SparkContext._
 import org.apache.spark.rdd.RDD
@@ -26,18 +26,18 @@ class DataSource(val dsp: DataSourceParams)
   def readTraining(sc: SparkContext): TrainingData = {
     val eventsDb = Storage.getPEvents()
     // read all events of EVENT involving ENTITY_TYPE and TARGET_ENTITY_TYPE
-    val eventsRDD: RDD[Vector] = eventsDb.find(
+    val eventsRDD: RDD[Vector] = eventsDb.aggregateProperties(
       appId = dsp.appId,
-      entityType = Some("user"),
+      entityType = "user",
       required = Some(List("plan","attr0","attr1")))(sc)
 	  .map { case (entityId, properties) =>
         try {
-          LabeledPoint(properties.get[Double]("plan"),
+          //Vector(properties.get[Double]("plan"),
             Vectors.dense(Array(
               properties.get[Double]("attr0"),
               properties.get[Double]("attr1")
             ))
-          )
+          //)
         } catch {
           case e: Exception => {
             logger.error(s"Failed to get properties ${properties} of" +

@@ -4,8 +4,7 @@ import io.prediction.controller.IEngineFactory
 import io.prediction.controller.Engine
 import org.apache.spark.mllib.linalg.Vector
 case class Query(
-	val dataPoint: Vector,
-	val label: Double
+	val dataPoint: Vector
 ) extends Serializable
 
 case class PredictedResult(
