@@ -27,10 +27,25 @@ class DataSource(val dsp: DataSourceParams)
     // read all events of EVENT involving ENTITY_TYPE and TARGET_ENTITY_TYPE
     val eventsRDD: RDD[Event] = eventsDb.find(
       appId = dsp.appId,
-      entityType = Some("ENTITY_TYPE"),
-      eventNames = Some(List("EVENT")),
-      targetEntityType = Some(Some("TARGET_ENTITY_TYPE")))(sc)
-
+      entityType = Some("user"),
+      required = Some(List("plan","attr0","attr1")))(sc)
+	  .map { case (entityId, properties) =>
+        try {
+          LabeledPoint(properties.get[Double]("plan"),
+            Vectors.dense(Array(
+              properties.get[Double]("attr0"),
+              properties.get[Double]("attr1")
+            ))
+          )
+        } catch {
+          case e: Exception => {
+            logger.error(s"Failed to get properties ${properties} of" +
+              s" ${entityId}. Exception: ${e}.")
+            throw e
+          }
+        }
+      }
+		
     new TrainingData(eventsRDD)
   }
 }

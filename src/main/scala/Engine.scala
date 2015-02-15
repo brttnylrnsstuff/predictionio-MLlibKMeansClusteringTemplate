@@ -2,10 +2,15 @@ package org.template.vanilla
 
 import io.prediction.controller.IEngineFactory
 import io.prediction.controller.Engine
+import org.apache.spark.mllib.linalg.Vectors
+case class Query(
+	val dataPoint: Vector[Double],
+	val label: Double
+) extends Serializable
 
-case class Query(q: String) extends Serializable
-
-case class PredictedResult(p: String) extends Serializable
+case class PredictedResult(
+	val label: Double) 
+extends Serializable
 
 object VanillaEngine extends IEngineFactory {
   def apply() = {

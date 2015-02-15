@@ -4,14 +4,15 @@
   "engineFactory": "org.template.vanilla.VanillaEngine",
   "datasource": {
     "params" : {
-      "appId": 1
+      "appId": 3
     }
   },
   "algorithms": [
     {
       "name": "algo",
       "params": {
-        "mult" : 1
+        "numCenters" : 2,
+		"numIterations" : 20
       }
     }
   ]
