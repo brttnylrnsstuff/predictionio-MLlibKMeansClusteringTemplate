@@ -24,13 +24,12 @@ Actual installation procedure(Linux-type Systems):
     
       'git clone https://github.com/sahiliitm/predictionio-template-scala-parallel-vanilla-modified.git'
       
-4)  We need a corresponding app with which the engine has to communicate. Create a new app using the command: 
+4)  We need a corresponding app with which the engine has to communicate. Create a new app using the commandand        also note down the details regarding the app in a text file called say 'info.txt'. These will be 
+    required for the engine and app to communicate: 
       
       'pio app new MyApp'
 
-    ans also note down the details regarding the app in a text file called say 'info.txt'. These will be 
-    required for the engine and app to communicate.
-
+    
 5)  Mofidy 'engine.json' to reflect the AppID of the app you just created. By default it has the id of the app
     which I last created.
     
@@ -51,30 +50,31 @@ Actual installation procedure(Linux-type Systems):
     events and which the Engine would later query to build it's model.
     
       'pio eventserver'
+    
 10) Modify the python script 'submitData.py' to reflect the appID of your app which you had saved in 
     'info.txt'. Execute it to convey the various points to be clustered by the K-Means algorithm as follows:
     
       'python2.7 submitData.py'
       
-11) Run: 
+11) Run the following in the directory where the code resides to build the model: 
       
       'pio build'
       
-    in the directory where the code resides to build the model. 
     
-12) Run:
+12) Run the following to train the model:
 
       'pio train'
       
-    to train the model.
     
-13) Run:
+    
+13) Run the following to deploy the model:
 
       'pio deploy'
     
-    to deploy the model.
+    
   
 14) Having deployed the engine, we can check that it's up and running using a standard web browser at the URL
+
       'http://localhost:8000'
       
 15) Finally, we can run a python script such as 'getPredictions.py' to get predictions for new data-Points.
