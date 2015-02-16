@@ -1,0 +1,7 @@
+2015-02-16 21:31:47,273 INFO  hbase.HBLEvents - The table predictionio_eventdata:events_6 doesn't exist yet. Creating now...
+2015-02-16 21:31:48,909 INFO  tools.Console$ - Initialized Event Store for this app ID: 6.
+2015-02-16 21:31:48,992 INFO  tools.Console$ - Created new app:
+2015-02-16 21:31:48,993 INFO  tools.Console$ -       Name: App6
+2015-02-16 21:31:48,993 INFO  tools.Console$ -         ID: 6
+2015-02-16 21:31:48,994 INFO  tools.Console$ - Access Key: 2HqjGUsHjJKEyKsKKvlPPKa0hGhv0e0mdGya6sRed5pTeLgPyXNx19FmqXmaF6xF
+
