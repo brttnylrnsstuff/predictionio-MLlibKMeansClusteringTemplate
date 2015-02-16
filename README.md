@@ -4,7 +4,8 @@ PredictionIO vanilla engine template (Scala-based parallelized engine)
 This is an application which demonstrates the use of K-Means clustering algorithm which can be deployed on
 a spark-cluster using prediction.io. Let's go over the whole procedure to get the app running step-wise. Note
 that it's assumed that the python SDK for prediction io has been installed and works seemlessly with 
-python2.7.
+python2.7. It has also been assumed that the preiction.io binaries have been added to PATH environment
+variable. If it hasn't been it can be done by editing '~/.bashrc'
 
 First, some pre-conditions which must be met.
 
