@@ -27,7 +27,7 @@ Actual installation procedure(Linux-type Systems):
 4)  We need a corresponding app with which the engine has to communicate. Create a new app using the command: 
       
       'pio app new MyApp'
-      
+
     ans also note down the details regarding the app in a text file called say 'info.txt'. These will be 
     required for the engine and app to communicate.
 
