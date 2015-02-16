@@ -26,7 +26,8 @@ class DataSource(val dsp: DataSourceParams)
   def readTraining(sc: SparkContext): TrainingData = {
     val eventsDb = Storage.getPEvents()
     // read all events of EVENT involving ENTITY_TYPE and TARGET_ENTITY_TYPE
-    val eventsRDD: RDD[Vector] = eventsDb.aggregateProperties(
+    println("Gathering data from event server.")
+	val eventsRDD: RDD[Vector] = eventsDb.aggregateProperties(
       appId = dsp.appId,
       entityType = "user",
       required = Some(List("plan","attr0","attr1")))(sc)

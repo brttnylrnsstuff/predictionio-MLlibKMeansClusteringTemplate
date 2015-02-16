@@ -1,7 +1,7 @@
 import predictionio
 import numpy as np
 client = predictionio.EventClient(
-    access_key='7tBkEmybaJ2xnY0y3r3aiDIyMfqABbXBj03VnZenWHXQJfBwEewlhnriDbwc6Elh',
+    access_key='2HqjGUsHjJKEyKsKKvlPPKa0hGhv0e0mdGya6sRed5pTeLgPyXNx19FmqXmaF6xF',
     url='http://localhost:7070',
     threads=5,
     qsize=500

@@ -26,7 +26,8 @@ class Algorithm(val ap: AlgorithmParams)
     // Simply count number of events
     // and multiple it by the algorithm parameter
     // and store the number as model
-    val kMeansI = new KMeans()
+    println("Running the K-Means clustering algorithm.")
+	val kMeansI = new KMeans()
  	kMeansI.setK(ap.numCenters)
 	kMeansI.setMaxIterations(ap.numIterations)
 	kMeansI.run(data.events)
