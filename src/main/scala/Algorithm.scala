@@ -12,8 +12,8 @@ import org.apache.spark.mllib.linalg.Vectors
 import grizzled.slf4j.Logger
 
 case class AlgorithmParams(
-	val numCenters: Int,
-	val numIterations: Int
+  val numberOfCenters: Int,
+  val numberOfIterations: Int
 ) extends Params
 
 class Algorithm(val ap: AlgorithmParams)
@@ -23,24 +23,21 @@ class Algorithm(val ap: AlgorithmParams)
   @transient lazy val logger = Logger[this.type]
 
   def train(data: PreparedData): KMeansModel = {
-    // Simply count number of events
-    // and multiple it by the algorithm parameter
-    // and store the number as model
+    
     println("Running the K-Means clustering algorithm.")
-	val kMeansI = new KMeans()
- 	kMeansI.setK(ap.numCenters)
-	kMeansI.setMaxIterations(ap.numIterations)
-	kMeansI.run(data.events)
+	  // Creates a new KMeans class which generates the KMeansModel
+    val kMeansI = new KMeans()
+ 	  // Setting the parameters
+    kMeansI.setK(ap.numberOfCenters)
+	  kMeansI.setMaxIterations(ap.numberOfIterations)
+	  // Return the KMeansModel which we get after running the KMeans
+    // algorithm on the data gather by the DataSource component
+    kMeansI.run(data.events)
   }
 
   def predict(model: KMeansModel, query: Query): PredictedResult = {
-    // Prefix the query with the model data
-  
-	val result = model.predict(Vectors.dense(query.dataPoint))
+    // Use the KMeansModel to predict label for new dataPoint
+    val result = model.predict(Vectors.dense(query.dataPoint))
     PredictedResult(label = result)
   }
-}
-
-class Model(val mc: Int) extends Serializable {
-  override def toString = s"mc=${mc}"
 }
