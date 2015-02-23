@@ -24,22 +24,23 @@ class DataSource(val dsp: DataSourceParams)
 
   override
   def readTraining(sc: SparkContext): TrainingData = {
-    val eventsDb = Storage.getPEvents()
-    // read all events of EVENT involving ENTITY_TYPE and TARGET_ENTITY_TYPE
+    val pointsDb = Storage.getPEvents()
+    // read all events involving "point" type (the only type in our case)
     println("Gathering data from event server.")
-	val eventsRDD: RDD[Vector] = eventsDb.aggregateProperties(
+	val pointsRDD: RDD[Vector] = pointsDb.aggregateProperties(
       appId = dsp.appId,
-      entityType = "user",
+      entityType = "point",
       required = Some(List("plan","attr0","attr1")))(sc)
 	  .map { case (entityId, properties) =>
         try {
-          //Vector(properties.get[Double]("plan"),
-            
+          
+          		// Convert the data from an Array to a RDD[vector] which is what KMeans 
+				// expects as input  
 			Vectors.dense(Array(
               properties.get[Double]("attr0"),
               properties.get[Double]("attr1")
             ))
-          //)
+          
         } catch {
           case e: Exception => {
             logger.error(s"Failed to get properties ${properties} of" +
@@ -49,14 +50,14 @@ class DataSource(val dsp: DataSourceParams)
         }
       }
 		
-    new TrainingData(eventsRDD)
+    new TrainingData(pointsRDD)
   }
 }
 
 class TrainingData(
-  val events: RDD[Vector]
+  val points: RDD[Vector]
 ) extends Serializable {
   override def toString = {
-    s"events: [${events.count()}] (${events.take(2).toList}...)"
+    s"events: [${points.count()}] (${points.take(2).toList}...)"
   }
 }

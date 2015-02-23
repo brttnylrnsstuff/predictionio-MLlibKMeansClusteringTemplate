@@ -31,8 +31,8 @@ class Algorithm(val ap: AlgorithmParams)
     kMeansI.setK(ap.numberOfCenters)
 	  kMeansI.setMaxIterations(ap.numberOfIterations)
 	  // Return the KMeansModel which we get after running the KMeans
-    // algorithm on the data gather by the DataSource component
-    kMeansI.run(data.events)
+    // algorithm on the data gathered by the DataSource component
+    kMeansI.run(data.points)
   }
 
   def predict(model: KMeansModel, query: Query): PredictedResult = {

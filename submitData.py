@@ -1,7 +1,7 @@
 import predictionio
 import numpy as np
 client = predictionio.EventClient(
-    access_key='LxPWNgkzGQsal4w6FPkk90VnevAaUAmmBdEspb0I7VSrZ7yOdekWH3vVvbrU7dIS',
+    access_key='PqOsVsETKGFXvYoWW9Mbm7LSGzEmVGSe3PXzqrRPayILgWcZbC2PpB8KI8NlFi8W',
     url='http://localhost:7070',
     threads=5,
     qsize=500
@@ -13,7 +13,7 @@ num = data.shape[0]
 for i in range(0,num):
 	client.create_event(
     	event="$set",
-    	entity_type="user",
+    	entity_type="point",
     	entity_id=i,
     	properties= {
       	"attr0" : data[i][0],
