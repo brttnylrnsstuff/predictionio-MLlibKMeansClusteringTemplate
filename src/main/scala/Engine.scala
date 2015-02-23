@@ -4,11 +4,11 @@ import io.prediction.controller.IEngineFactory
 import io.prediction.controller.Engine
 import org.apache.spark.mllib.linalg.Vector
 case class Query(
-	val dataPoint: Array[Double]
+  val dataPoint: Array[Double]
 ) extends Serializable
 
 case class PredictedResult(
-	val label: Double) 
+  val label: Double) 
 extends Serializable
 
 object VanillaEngine extends IEngineFactory {
@@ -17,6 +17,6 @@ object VanillaEngine extends IEngineFactory {
       classOf[DataSource],
       classOf[Preparator],
       Map("algo" -> classOf[Algorithm]),
-      classOf[Serving])
+      	classOf[Serving])
   }
 }
