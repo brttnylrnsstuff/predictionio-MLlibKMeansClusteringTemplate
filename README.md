@@ -1,5 +1,5 @@
 # predictionio-template-scala-parallel-vanilla-modified
-PredictionIO vanilla engine template (Scala-based parallelized engine) 
+PredictionIO clustering engine template (Scala-based parallelized engine) 
 
 ## Overview
 
