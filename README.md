@@ -96,9 +96,10 @@ Any input of a data point has the following fields:
 1. entity_type : This is always set to 'point' in this case since there is just a single type of entity which this engine works with a data point.
 2. entity_id : This is the unique id which each data point has, and which the engine can use internally to                        distinguish various data points.
 3. properties  : The attributes of the data point. Can include the true label too, to evaluate the clustering     algorithm being used. The example included includes:
-...."attr0" : First attribute,
-...."attr1" : Second attribute,
-...."plan"  : The true label for the data point
+
+    "attr0" : First attribute,
+    "attr1" : Second attribute,
+    "plan"  : The true label for the data point
 A sample query looks as follows:
 ....client.create_event(
 ........event="$set",
