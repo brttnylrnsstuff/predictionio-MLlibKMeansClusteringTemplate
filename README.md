@@ -90,8 +90,8 @@ Actual installation procedure(Linux-type Systems):
     
 ## Usage of the Engine
 
-### Input :
-Any input of a data point has the following fields:
+### Input For training:
+Any input to the Engine for the sake of training is a data point and has the following fields:
 
 1. entity_type : This is always set to 'point' in this case since there is just a single type of entity which this engine works with a data point.
 2. entity_id : This is the unique id which each data point has, and which the engine can use internally to                        distinguish various data points.
@@ -103,7 +103,7 @@ Any input of a data point has the following fields:
     
     "plan"  : The true label for the data point
     
-A sample query looks as follows:
+A sample query looks as follows(Using Python SDK):
 ```python
 client.create_event(
 event="$set",
@@ -115,5 +115,14 @@ properties= {
         "plan" : 1
         }
     )
+```
+### Input for Prediction
+The input query is a simple JSON object with field **dataPoint**. A typical query looks as follows whem using Python SDK:
+```python
+engine_client.send_query({"dataPoint": [12.1, 15.1]})
+```
+This returns a PredictedResult object described in next section.
 
+###Output
 
+Is an object of class **PredictedResult** and has a single field, the predicted label, of type Double.
