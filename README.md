@@ -104,11 +104,12 @@ Any input of a data point has the following fields:
     "plan"  : The true label for the data point
     
 A sample query looks as follows:
-....client.create_event(
-........event="$set",
-........entity_type="point",
-........entity_id=i,
-........properties= {
+```python
+client.create_event(
+event="$set",
+entity_type="point",
+entity_id=i,
+properties= {
         "attr0" : 12.6,
         "attr1" : 1.5,
         "plan" : 1
