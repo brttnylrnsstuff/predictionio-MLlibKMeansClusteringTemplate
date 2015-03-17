@@ -17,7 +17,13 @@ Cluster analysis or clustering is the task of grouping a set of objects in such 
 
 In centroid-based clustering, clusters are represented by a central vector, which may not necessarily be a member of the data set. When the number of clusters is fixed to k, k-means clustering gives a formal definition as an optimization problem: find the k cluster centers and assign the objects to the nearest cluster center, such that the squared distances from the cluster are minimized.
 
+## Dataset
 
+The set of datasets used is a public one. It resides at the link:
+
+    http://cs.joensuu.fi/sipu/datasets/
+
+The dataset which is used by default is the *jain.txt* dataset and if a different data set is to be used then the number of features has to be changed correspondingly in all the source files.
 
 ## Building the App with Preidiction.io
 
