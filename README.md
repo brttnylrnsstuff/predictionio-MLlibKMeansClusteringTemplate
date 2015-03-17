@@ -9,6 +9,20 @@ that it's assumed that the python SDK for prediction io has been installed and w
 python2.7. It has also been assumed that the preiction.io binaries have been added to PATH environment
 variable. If it hasn't been it can be done by editing '~/.bashrc'
 
+## Clustering
+
+Cluster analysis or clustering is the task of grouping a set of objects in such a way that objects in the same group (called a cluster) are more similar (in some sense or another) to each other than to those in other groups (clusters). It is a main task of exploratory data mining, and a common technique for statistical data analysis, used in many fields, including machine learning, pattern recognition, image analysis, information retrieval, and bioinformatics.
+
+In centroid-based clustering (the kind we use in this template), clusters are represented by a central vector, which may not necessarily be a member of the data set. When the number of clusters is fixed to k, k-means clustering gives a formal definition as an optimization problem: find the k cluster centers and assign the objects to the nearest cluster center, such that the squared distances from the cluster are minimized.
+
+## Training Data
+
+The training data used is a set of public data sets that can be found at 
+
+    http://cs.joensuu.fi/sipu/datasets/
+    
+The data set used in the default implementation of this template is *jain.txt*.
+
 ## Building the App with Preidiction.io
 
 First, some pre-conditions which must be met.
