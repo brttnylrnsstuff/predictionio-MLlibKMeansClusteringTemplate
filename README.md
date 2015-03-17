@@ -19,7 +19,7 @@ In centroid-based clustering, clusters are represented by a central vector, whic
 
 ## Dataset
 
-The set of datasets used is a public one. It resides at the link:
+The set of datasets used is a public one. It resides at the link (search for *Shape sets*):
 
     http://cs.joensuu.fi/sipu/datasets/
 
