@@ -142,5 +142,5 @@ This returns a PredictedResult object described in next section.
 It is an object of class **PredictedResult** and has a single field, the predicted label, of type Double.
 It is returned as a JSON object by the engine and looks like this:
 ```javascript
-{u'label': 0.0}
+{u'cluster': 0.0}
 ```
