@@ -45,7 +45,7 @@ Actual installation procedure(Linux-type Systems):
     
       git clone https://github.com/sahiliitm/predictionio-template-scala-parallel-vanilla-modified.git
       
-4)  We need a corresponding app with which the engine has to communicate. Create a new app using the commandand        also note down the details regarding the app in a text file called say 'info.txt'. These will be 
+4)  We need a corresponding app with which the engine has to communicate. Create a new app using the commandand        also note down the details regarding the app in a text file called say 'ScriptsAndInfo/info.txt'. These will be 
     required for the engine and app to communicate: 
       
       pio app new MyApp
@@ -72,10 +72,10 @@ Actual installation procedure(Linux-type Systems):
     
       pio eventserver
     
-10) Modify the python script 'submitData.py' to reflect the appID of your app which you had saved in 
+10) Modify the python script 'ScriptsAndInfo/submitData.py' to reflect the appID of your app which you had saved in 
     'info.txt'. Execute it to convey the various points to be clustered by the K-Means algorithm as follows:
     
-      python2.7 submitData.py
+      python2.7 ScriptsAndInfo/submitData.py
       
 11) Run the following in the directory where the code resides to build the model: 
       
@@ -98,10 +98,10 @@ Actual installation procedure(Linux-type Systems):
 
       http://localhost:8000
       
-15) Finally, we can run a python script such as 'getPredictions.py' to get predictions for new data-Points.
+15) Finally, we can run a python script such as 'ScriptsAndInfo/getPredictions.py' to get predictions for new data-Points.
     Run:
     
-      python2.7 getPredictions.py
+      python2.7 ScriptsAndInfo/getPredictions.py
       
     
 ## Usage of the Engine
