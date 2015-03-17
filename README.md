@@ -11,7 +11,7 @@ variable. If it hasn't been it can be done by editing '~/.bashrc'
 
 ## Clustering
 
-![Text](http://en.wikipedia.org/wiki/Cluster_analysis#/media/File:Linear-svm-scatterplot.svg)
+![Text](http://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Linear-svm-scatterplot.svg/720px-Linear-svm-scatterplot.svg.png)
 
 Cluster analysis or clustering is the task of grouping a set of objects in such a way that objects in the same group (called a cluster) are more similar (in some sense or another) to each other than to those in other groups (clusters). It is a main task of exploratory data mining, and a common technique for statistical data analysis, used in many fields, including machine learning, pattern recognition, image analysis, information retrieval, and bioinformatics.
 
