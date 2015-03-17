@@ -1,4 +1,4 @@
-# predictionio-template-scala-parallel-vanilla-modified
+# predictionio-MLlibKMeansClusteringTemplate
 PredictionIO clustering engine template (Scala-based parallelized engine) 
 
 ## Overview
