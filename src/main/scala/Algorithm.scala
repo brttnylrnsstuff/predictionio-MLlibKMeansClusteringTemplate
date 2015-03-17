@@ -36,8 +36,8 @@ class Algorithm(val ap: AlgorithmParams)
   }
 
   def predict(model: KMeansModel, query: Query): PredictedResult = {
-    // Use the KMeansModel to predict label for new dataPoint
+    // Use the KMeansModel to predict cluster for new dataPoint
     val result = model.predict(Vectors.dense(query.dataPoint))
-    PredictedResult(label = result)
+    PredictedResult(cluster = result)
   }
 }

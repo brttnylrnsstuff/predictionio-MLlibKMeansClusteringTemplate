@@ -8,7 +8,7 @@ case class Query(
 ) extends Serializable
 
 case class PredictedResult(
-  val label: Double) 
+  val cluster: Double) 
 extends Serializable
 
 object VanillaEngine extends IEngineFactory {
