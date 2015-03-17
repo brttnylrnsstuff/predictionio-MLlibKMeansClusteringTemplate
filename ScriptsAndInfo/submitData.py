@@ -7,7 +7,7 @@ client = predictionio.EventClient(
     qsize=500
 )
 
-data = np.genfromtxt("data/jain.txt", delimiter = "\t")
+data = np.genfromtxt("../data/jain.txt", delimiter = "\t")
 num = data.shape[0]
 # Set the 4 properties for a user
 for i in range(0,num):
