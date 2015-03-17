@@ -1,4 +1,4 @@
-# predictionio-template-scala-parallel-vanilla-modified
+# predictionio-MLlibKMeansClusteringTemplate
 PredictionIO clustering engine template (Scala-based parallelized engine) 
 
 ## Overview
@@ -8,6 +8,22 @@ a spark-cluster using prediction.io. Let's go over the whole procedure to get th
 that it's assumed that the python SDK for prediction io has been installed and works seemlessly with 
 python2.7. It has also been assumed that the preiction.io binaries have been added to PATH environment
 variable. If it hasn't been it can be done by editing '~/.bashrc'
+
+## Clustering
+
+![Clustering](http://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Linear-svm-scatterplot.svg/720px-Linear-svm-scatterplot.svg.png)
+
+Cluster analysis or clustering is the task of grouping a set of objects in such a way that objects in the same group (called a cluster) are more similar (in some sense or another) to each other than to those in other groups (clusters). It is a main task of exploratory data mining, and a common technique for statistical data analysis, used in many fields, including machine learning, pattern recognition, image analysis, information retrieval, and bioinformatics.
+
+In centroid-based clustering, clusters are represented by a central vector, which may not necessarily be a member of the data set. When the number of clusters is fixed to k, k-means clustering gives a formal definition as an optimization problem: find the k cluster centers and assign the objects to the nearest cluster center, such that the squared distances from the cluster are minimized.
+
+## Dataset
+
+The set of datasets used is a public one. It resides at the link (search for *Shape sets*):
+
+    http://cs.joensuu.fi/sipu/datasets/
+
+The dataset which is used by default is the *jain.txt* dataset and if a different data set is to be used then the number of features has to be changed correspondingly in all the source files.
 
 ## Building the App with Preidiction.io
 
@@ -128,5 +144,5 @@ This returns a PredictedResult object described in next section.
 It is an object of class **PredictedResult** and has a single field, the predicted label, of type Double.
 It is returned as a JSON object by the engine and looks like this:
 ```javascript
-{u'label': 0.0}
+{u'cluster': 0.0}
 ```
