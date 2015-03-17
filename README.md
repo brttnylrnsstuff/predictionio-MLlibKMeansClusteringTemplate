@@ -41,7 +41,7 @@ Actual installation procedure(Linux-type Systems):
 3)  Clone the current repository by executing the following command in the directory where you want 
     the code to reside:
     
-      git clone https://github.com/sahiliitm/predictionio-template-scala-parallel-vanilla-modified.git
+      git clone https://github.com/sahiliitm/predictionio-MLlibKMeansClusteringTemplate.git
       
 4)  We need a corresponding app with which the engine has to communicate. Create a new app using the commandand        also note down the details regarding the app in a text file called say 'info.txt'. These will be 
     required for the engine and app to communicate: 
