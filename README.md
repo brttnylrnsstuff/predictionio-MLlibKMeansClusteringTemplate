@@ -154,7 +154,8 @@ This returns a PredictedResult object described in next section.
 
 ### Predicted Result
 
-It is an object of class **PredictedResult** and has a single field, the predicted label, of type Double.
+The output is an object of this class and has a single field, the predicted label, of type Double. This field is called *cluster* for obvious reasons.
+
 It is returned as a JSON object by the engine and looks like this:
 ```javascript
 {u'cluster': 0.0}
