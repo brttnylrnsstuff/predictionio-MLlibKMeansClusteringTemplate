@@ -29,6 +29,10 @@ The dataset which is used by default is the *jain.txt* dataset and if a differen
 
 Typically a prediction-io Engine requires *events*, which is the defaut entity_type of a data point in the template. This is the entity_type to be used while storing the data on the prediction-io event server. This entity_type has been changed to *point* in this template since the data is indeed in the form of points which we want to cluster. Each such data point has a unique *entity_id* which the prediction io server uses to address the data point.The *properties* filed of this *point* captures it's coordinates in a *k*-dimentional space, where *k* is the number of features of the data point. Additionally any relevant information about the data point can also be passed onto the prediction-io event server, for example the true label of the point. Such information would be useful in evaluating the performance of the clustering engine.
 
+The sample point can be found in the python script file which uploads the data for this template to the prediction-io event server. This file resides in ./ScriptsAndInfo/submitData.py and can be unvoked as 
+
+    python ScriptsAndInfo/submitData.py
+
 
 ## Building the App with Preidiction.io
 
