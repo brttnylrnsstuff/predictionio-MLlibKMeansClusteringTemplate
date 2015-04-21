@@ -34,6 +34,7 @@ Original:
   ]
   ```
   Changed to:
+```Scala
  "algorithms": [
     {
       "name": "algo",
