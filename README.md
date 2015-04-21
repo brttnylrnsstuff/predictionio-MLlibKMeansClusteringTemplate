@@ -141,14 +141,18 @@ properties= {
         }
     )
 ```
-### Input for Prediction
-The input query is a simple JSON object with field **dataPoint**. A typical query looks as follows whem using Python SDK:
+### Query
+The input query to the trained clustering engine is a simple JSON object with field **dataPoint**. A typical query looks as given below when we use the Python SDK for prediction-io:
 ```python
 engine_client.send_query({"dataPoint": [12.1, 15.1]})
 ```
+The sample code which sends this query to the prediction-io event server and gets back the PredictedResult resides in ./ScriptsAndInfo/getPredictions.py and can be invoked as
+
+    python ScriptsAndInfo/getPredictions.py
+    
 This returns a PredictedResult object described in next section.
 
-###Output
+### Predicted Result
 
 It is an object of class **PredictedResult** and has a single field, the predicted label, of type Double.
 It is returned as a JSON object by the engine and looks like this:
