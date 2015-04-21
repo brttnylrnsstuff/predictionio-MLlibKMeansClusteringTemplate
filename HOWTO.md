@@ -61,7 +61,9 @@ class Algorithm(val ap: AlgorithmParams)
 The two main functions implemented by the Algorithm class are the *train* and *predict* functions. The train function is used to build a *KMeansModel* which can then be used by the Engine to *predict* the cluster assignments for new data points using the Predict function.
 
 The code which accomplishes this is:
+
 Train:
+
 ```Scala
  def train(data: PreparedData): KMeansModel = {
     
