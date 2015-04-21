@@ -86,4 +86,13 @@ Train:
     PredictedResult(cluster = result)
   }
   ```
+## Updating Data Source.scala
+Since we have to include and use an algorithm from a library, this is possibly the most important step in the integration. In 'DataSource.scala'  import the MLlib KMeans algorithm by adding the following lines:
   
+```Scala
+  import org.apache.spark.mllib.clustering.KMeans
+  import org.apache.spark.mllib.clustering.KMeansModel
+  import org.apache.spark.mllib.linalg.Vector
+  import org.apache.spark.mllib.linalg.Vectors
+```
+
