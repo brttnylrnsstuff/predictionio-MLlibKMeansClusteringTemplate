@@ -17,13 +17,17 @@ Cluster analysis or clustering is the task of grouping a set of objects in such 
 
 In centroid-based clustering, clusters are represented by a central vector, which may not necessarily be a member of the data set. When the number of clusters is fixed to k, k-means clustering gives a formal definition as an optimization problem: find the k cluster centers and assign the objects to the nearest cluster center, such that the squared distances from the cluster are minimized.
 
-## Dataset
+## Data Required
 
 The set of datasets used is a public one. It resides at the link (search for *Shape sets*):
 
     http://cs.joensuu.fi/sipu/datasets/
 
-The dataset which is used by default is the *jain.txt* dataset and if a different data set is to be used then the number of features has to be changed correspondingly in all the source files.
+The dataset which is used by default is the *jain.txt* dataset and if a different data set is to be used then the number of features has to be changed correspondingly in all the source files. This data reside in the ./data directory.
+
+## Events Required
+
+Typically a prediction-io Engine requires *events*, which is the defaut entity_type of a data point in the template. This is the entity_type to be used while storing the data on the prediction-io event server. This entity_type has been changed to *point* in this template since the data is indeed in the form of points which we want to cluster. Each such data point has a unique *entity_id*
 
 ## Building the App with Preidiction.io
 
@@ -51,7 +55,7 @@ Actual installation procedure(Linux-type Systems):
       pio app new MyApp
 
     
-5)  Mofidy 'engine.json' to reflect the AppID of the app you just created. By default it has the id of the app
+5)  Modify 'engine.json' to reflect the AppID of the app you just created. By default it has the id of the app
     which I last created.
     
 6)  We're now good to go and can put all the pieces together and make sure that the engine and app talk together.
