@@ -141,8 +141,8 @@ Changed to:
   ```
 The main changes are:
 
-..* Instead of creating an RDD of Event we create an RDD of Vector, which is the kind of input which KMeans algorithm exp[ects.
+* Instead of creating an RDD of Event we create an RDD of Vector, which is the kind of input which KMeans algorithm exp[ects.
 
-..* The *entity_type* and *properties* of the data points should be made in sync with the type which was inputted to the prediction-io event server.
+* The *entity_type* and *properties* of the data points should be made in sync with the type which was inputted to the prediction-io event server.
 
-..* The original cluster of the data point represented by the attribute *plan* is dropped since clustering is an unsupervised learning algorithm.
+* The original cluster of the data point represented by the attribute *plan* is dropped since clustering is an unsupervised learning algorithm.
