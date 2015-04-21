@@ -128,7 +128,7 @@ Any input to the Engine for the sake of training is a data point and has the fol
     
     "plan"  : The true label for the data point
     
-A sample query looks as follows(Using Python SDK):
+A sample input for the training phase looks as follows(Using Python SDK):
 ```python
 client.create_event(
 event="$set",
