@@ -146,3 +146,13 @@ The main changes are:
 * The *entity_type* and *properties* of the data points should be made in sync with the type which was inputted to the prediction-io event server.
 
 * The original cluster of the data point represented by the attribute *plan* is dropped since clustering is an unsupervised learning algorithm.
+
+We have already updated *engine.json*. No updates need to be made to *Preparator.scala* and *Serving.Scala*.
+
+The engine now uses MLlib KMeans algorithm. We are ready to build, train and deploy the engine as described in README.md.
+
+```Scala
+pio build
+pio train
+pio deploy
+```
