@@ -86,13 +86,23 @@ Train:
     PredictedResult(cluster = result)
   }
   ```
-## Updating Data Source.scala
-Since we have to include and use an algorithm from a library, this is possibly the most important step in the integration. In 'DataSource.scala'  import the MLlib KMeans algorithm by adding the following lines:
-  
+## Updating Data]Source.scala
+We need to modify the DataSource.scala source file to reflect the format in which data is being given to the event server. The following header files are added since we expect an RDD of *Vector*.   
 ```Scala
-  import org.apache.spark.mllib.clustering.KMeans
-  import org.apache.spark.mllib.clustering.KMeansModel
   import org.apache.spark.mllib.linalg.Vector
   import org.apache.spark.mllib.linalg.Vectors
 ```
+The main function in the DataSource class is the readTraining function. It reads the data points from the prediction-io event server and adds it to the RDD of Vector which the KMeans algorithm expects as input.
+```Scala
+ def readTraining(sc: SparkContext): TrainingData = {
 
+    // read all events of EVENT involving ENTITY_TYPE and TARGET_ENTITY_TYPE
+    val eventsRDD: RDD[Event] = PEventStore.find(
+      appName = dsp.appName,
+      entityType = Some("ENTITY_TYPE"),
+      eventNames = Some(List("EVENT")),
+      targetEntityType = Some(Some("TARGET_ENTITY_TYPE")))(sc)
+
+    new TrainingData(eventsRDD)
+  }
+ ```
