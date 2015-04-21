@@ -34,7 +34,7 @@ Original:
   ]
   ```
   Changed to:
-```Scala
+```Javascript
  "algorithms": [
     {
       "name": "algo",
@@ -45,5 +45,43 @@ Original:
     }
   ]
   ```
+Now, we must modify the main class *Algorithm* which will implement the KMeans algorithm. The model which this class implements is changed from the original *Model* class to the *KMeansModel* class, which is the model returned by the KMeans algorithm.
+Original:
+```Scala
+class Algorithm(val ap: AlgorithmParams)
+  // extends PAlgorithm if Model contains RDD[]
+  extends P2LAlgorithm[PreparedData, Model, Query, PredictedResult] {
+```
+Changed to:
+```Scala
+class Algorithm(val ap: AlgorithmParams)
+  // extends PAlgorithm if Model contains RDD[]
+  extends P2LAlgorithm[PreparedData, KMeansModel, Query, PredictedResult] {
+ ```
+The two main functions implemented by the Algorithm class are the *train* and *predict* functions. The train function is used to build a *KMeansModel* which can then be used by the Engine to *predict* the cluster assignments for new data points using the Predict function.
 
-
+The code which accomplishes this is:
+Train:
+```Scala
+ def train(data: PreparedData): KMeansModel = {
+    
+    println("Running the K-Means clustering algorithm.")
+	  // Creates a new KMeans class which generates the KMeansModel
+    val kMeansI = new KMeans()
+ 	  // Setting the parameters
+    kMeansI.setK(ap.numberOfCenters)
+	  kMeansI.setMaxIterations(ap.numberOfIterations)
+	  // Return the KMeansModel which we get after running the KMeans
+    // algorithm on the data gathered by the DataSource component
+    kMeansI.run(data.points)
+  }
+  ```
+  Predict:
+  ```Scala
+  def predict(model: KMeansModel, query: Query): PredictedResult = {
+    // Use the KMeansModel to predict cluster for new dataPoint
+    val result = model.predict(Vectors.dense(query.dataPoint))
+    PredictedResult(cluster = result)
+  }
+  ```
+  
