@@ -93,6 +93,7 @@ We need to modify the DataSource.scala source file to reflect the format in whic
   import org.apache.spark.mllib.linalg.Vectors
 ```
 The main function in the DataSource class is the readTraining function. It reads the data points from the prediction-io event server and adds it to the RDD of Vector which the KMeans algorithm expects as input.
+Original:
 ```Scala
  def readTraining(sc: SparkContext): TrainingData = {
 
@@ -106,3 +107,39 @@ The main function in the DataSource class is the readTraining function. It reads
     new TrainingData(eventsRDD)
   }
  ```
+Changed to:
+```Scala
+ def readTraining(sc: SparkContext): TrainingData = {
+    val pointsDb = Storage.getPEvents()
+      // read all events involving "point" type (the only type in our case)
+    println("Gathering data from event server.")
+	val pointsRDD: RDD[Vector] = pointsDb.aggregateProperties(
+      appId = dsp.appId,
+      entityType = "point",
+      required = Some(List("plan","attr0","attr1")))(sc)
+	  .map { case (entityId, properties) =>
+        try {
+          
+        // Convert the data from an Array to a RDD[vector] which is what KMeans 
+				// expects as input  
+			Vectors.dense(Array(
+              properties.get[Double]("attr0"),
+              properties.get[Double]("attr1")
+        ))
+          
+        } catch {
+          case e: Exception => {
+            logger.error(s"Failed to get properties ${properties} of" +
+              s" ${entityId}. Exception: ${e}.")
+            throw e
+          }
+        }
+      }
+		
+    new TrainingData(pointsRDD)
+  }
+  ```
+The main changes are:
+..* Instead of creating an RDD of Event we create an RDD of Vector, which is the kind of input which KMeans algorithm exp[ects.
+..* The *entity_type* and *properties* of the data points should be made in sync with the type which was inputted to the prediction-io event server.
+..* The original cluster of the data point represented by the attribute *plan* is dropped since clustering is an unsupervised learning algorithm.
