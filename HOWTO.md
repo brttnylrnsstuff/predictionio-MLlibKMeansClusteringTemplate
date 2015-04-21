@@ -13,4 +13,36 @@ Since we have to include and use an algorithm from a library, this is possibly t
   import org.apache.spark.mllib.linalg.Vectors
 ```
 These are the necessary classes in order to use the MLLib's KMeans algporithm.
+Modify the AlgorithmParams class for the KMeans algorithm:
+```Scala
+  case class AlgorithmParams(
+    val numberOfCenters: Int,
+    val numberOfIterations: Int
+  ) extends Params
+```
+By Default the class includes nothing useful and serves only as a template class. By including these fields in the AlgorithmParams class, we can easily change the meta-parameters of the algorithm by editing the relevant fields in the *engine.json* file which resides in the root directory for the Clustering template code. Below is a code listing which shows how the engine.json file is to be modifed as well as the meta-parameter settings used by default.
+
+Original:
+```Javascript
+  "algorithms": [
+    {
+      "name": "algo",
+      "params": {
+        "mult" : 1
+      }
+    }
+  ]
+  ```
+  Changed to:
+ "algorithms": [
+    {
+      "name": "algo",
+      "params": {
+        "numberOfCenters" : 2,
+		"numberOfIterations" : 500
+      }
+    }
+  ]
+  ```
+
 
