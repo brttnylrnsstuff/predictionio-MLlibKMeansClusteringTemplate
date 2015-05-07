@@ -86,7 +86,7 @@ Train:
     PredictedResult(cluster = result)
   }
   ```
-## Updating Data]Source.scala
+## Updating DataSource.scala
 We need to modify the DataSource.scala source file to reflect the format in which data is being given to the event server. The following header files are added since we expect an RDD of *Vector*.   
 ```Scala
   import org.apache.spark.mllib.linalg.Vector
